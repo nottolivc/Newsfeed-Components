@@ -144,7 +144,7 @@ const data = [
 // pCreator();
 // spanCreator();
 
-console.log('updating');
+//console.log('updating');
 
 // create all in one function
 function newArticles(data) {
@@ -188,10 +188,13 @@ function newArticles(data) {
   
   //add a class list of expandButton to it
   expandB.classList.add('expandButton');
+  //add some text
+  expandB.textContent = 'Read';
   
+  //toggle the class list in the menu
   //add a click event
   expandB.addEventListener('click', (e) => {
-    newComponents.toggle('article-open');
+    newComponents.classList.toggle('article-open');
   })
 
   //append the button to the articles as child
@@ -199,13 +202,26 @@ function newArticles(data) {
   return newComponents;
 }
 
-const articles = document.querySelector('.articles')
+//store articles in variable
+const articleNew = document.querySelector('.articles');
+
 //use a for loop to loop through the data and create the new elements
 data.forEach((arrData) => {
-  let createArticles = newArticles(arrData);
-  console.log(createArticles)
-})
+  let articleAdd = newArticles(arrData);
+  console.log(articleAdd);
+  //add to the DOM
+  articleNew.appendChild(articleAdd);
+});
 
 
 //call the function to create the articles now, from the very top
 newArticles(data);
+
+//map the data function
+// let newComponentsMap = data.map( (arrData) => {
+//   let newMap = buttonCreator(arrData);
+//   // Remember, we always need to return something when we use .map
+//   return newMap;
+// )};
+const articlesData = data.map(arr => newArticles(arr));
+console.log(articlesData);

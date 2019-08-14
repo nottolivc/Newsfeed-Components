@@ -33,3 +33,46 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+//STRETCH, create items for the menu function
+const menuItems = ['Articles','About','Contact', 'Home'];
+//store menu class in variable
+const menuOne = document.querySelector('menu');
+//declare
+function createMenu(menuItems) {
+  const menuCreator = document.createElement('div');
+  menuCreator.classList.add('menu--open');
+  //add a ul to it
+  menuCreator.createElement('ul');
+  //add some list items
+  menuCreator.createElement('li');
+  menuCreator.createElement('li');
+  //toggle the class list in the menu and add a click event
+  menuCreator.addEventListener('click', (e) => {
+    menuCreator.classList.toggle('menu--open');
+  })
+  //append the button to the articles as child
+  menuOne.appendChild(menuCreator);
+  return menuCreator;
+};
+//call function
+createMenu(menuItems);
+
+
+
+// DRY code, simpler next 
+
+// const toggleMenu = item => {
+//   // Toggle the "menu--open" class on your menu 
+//   item.classList.toggle('menu--open');
+// };
+
+// // Start Here: Create a reference to the ".menu" class
+// const menu = document.querySelector('.menu');
+// // create a reference to the ".menu-button" class
+// const menuBtn = document.querySelector('.menu-button');
+// // Using your menuButton reference, add a click handler that calls toggleMenu
+
+// menuButton.addEventListener('click', () => {
+// //toggle menu function called
+// toggleMenu(menu);
