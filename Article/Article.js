@@ -112,3 +112,96 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+// function articleCreator(data) {
+//   const articles = document.createElement('articles');
+//   articles.textContent = data;
+//   articles.classList.add('article');  
+//   return articles;
+// }
+
+// function titleCreator(data) {
+//   const title = document.createElement('h2');
+//   title.textContent = data;
+//   return title;
+// }
+
+// function pCreator(data) {
+//   const para = document.createElement('p');
+//   para.textContent = data;
+//   para.classList.add('date');  
+//   return para;
+// }
+
+// function spanCreator(data) {
+//   const spanArticle = document.createElement('span');
+//   spanArticle.textContent = data;
+//   spanArticle.classList.add('expandButton');  
+//   return spanArticle;
+// }
+
+// articleCreator();
+// titleCreator();
+// pCreator();
+// spanCreator();
+
+console.log('updating');
+
+// create all in one function
+function newArticles(attributes) {
+  //create a div first
+  const newComponents = document.createElement('div');
+  //add the class list
+  newComponents.classList.add('article');
+  
+  //create the title and an h2 and pull the title from data
+  const titles = document.createElement('h2')
+  titles.textContent = data.title;
+  //append the new element
+  newComponents.appendChild(titles);
+
+  //create p tags for the articles with a class of date 
+  const pDates = document.createElement('p');
+  pDates.textContent = attributes.date;
+  pDates.classList.add('date');
+
+  newComponents.appendChild(pDates);
+
+  //create the first p tag
+  const pOne = document.createElement('p');
+  pOne.textContent = attributes.firstParagraph;
+  
+  newComponents.appendChild(pOne);
+  
+  //create the second p tag
+  const pTwo = document.createElement('p');
+  pTwo.textContent = attributes.secondParagraph;
+  newComponents.appendChild(pTwo);
+
+  //create the third p tag
+  const pThree = document.createElement('p');
+  pThree.textContent = attributes.thirdParagraph;
+
+  newComponents.appendChild(pThree);
+  
+  //create a span element w class expandButton to expand the articles
+  const expandB = document.createElement('span');
+  
+  //add a class list of expandButton to it
+  expandB.classList.add('expandButton');
+  
+  //add a click event
+  expandB.addEventListener('click', (e) => {
+    newComponents.toggle('article-open');
+  })
+
+  //append the button to the articles as child
+  newComponents.appendChild(expandB);
+  return newComponents;
+}
+
+const articles = document.querySelector('.articles')
+//use a for loop to loop through the data and create the new elements
+data.forEach((arrData) => {
+  let createArticles = newArticles(arrData);
+  console.log(createArticles)
+})
