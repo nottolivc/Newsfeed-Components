@@ -147,7 +147,7 @@ const data = [
 console.log('updating');
 
 // create all in one function
-function newArticles(attributes) {
+function newArticles(data) {
   //create a div first
   const newComponents = document.createElement('div');
   //add the class list
@@ -161,25 +161,25 @@ function newArticles(attributes) {
 
   //create p tags for the articles with a class of date 
   const pDates = document.createElement('p');
-  pDates.textContent = attributes.date;
+  pDates.textContent = data.date;
   pDates.classList.add('date');
 
   newComponents.appendChild(pDates);
 
   //create the first p tag
   const pOne = document.createElement('p');
-  pOne.textContent = attributes.firstParagraph;
+  pOne.textContent = data.firstParagraph;
   
   newComponents.appendChild(pOne);
   
   //create the second p tag
   const pTwo = document.createElement('p');
-  pTwo.textContent = attributes.secondParagraph;
+  pTwo.textContent = data.secondParagraph;
   newComponents.appendChild(pTwo);
 
   //create the third p tag
   const pThree = document.createElement('p');
-  pThree.textContent = attributes.thirdParagraph;
+  pThree.textContent = data.thirdParagraph;
 
   newComponents.appendChild(pThree);
   
@@ -205,3 +205,7 @@ data.forEach((arrData) => {
   let createArticles = newArticles(arrData);
   console.log(createArticles)
 })
+
+
+//call the function to create the articles now, from the very top
+newArticles(data);
